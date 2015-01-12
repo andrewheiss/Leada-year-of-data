@@ -38,6 +38,8 @@ ggplot(bike.duration, aes(x=average)) +
 # Get answer
 as.duration(mean(bike.duration$average) * 60)
 
+# [1] "1784.43089330139s (~29.74 minutes)"
+
 
 #------------
 # Problem 2
@@ -57,6 +59,9 @@ ggplot(bike.weekdays, aes(x=day.rev, y=trips)) +
 
 # Get answer
 bike.weekdays %>% filter(trips == max(trips))
+
+#   Start.Day trips  day.rev
+# 1  Thursday 25265 Thursday
 
 
 #------------
@@ -108,3 +113,6 @@ for(i in 1:nrow(bikes.tidy)) {
 
 # Get row where rebalancing should happen
 bikes.tidy[rebalance.point,]
+
+#      Trip.ID Event.Type          Event.Date         Event.Station
+# 5881    8713        Out 2013-09-02 11:33:00 Embarcadero at Bryant
