@@ -26,19 +26,18 @@ bikes <- bikes.raw %>%
 # Get average duration for each bike
 bike.duration <- bikes %>% 
   group_by(Bike) %>% 
-  summarize(average = mean(Duration) / 60)
+  summarize(total.time = sum(Duration) / 60)
 
 # Plot, just for fun
-ggplot(bike.duration, aes(x=average)) + 
-  geom_histogram(binwidth=10) + 
-  geom_vline(xintercept=mean(bike.duration$average), colour="darkred", size=1) + 
-  # coord_cartesian(xlim=c(0, 250)) + 
+ggplot(bike.duration, aes(x=total.time)) + 
+  geom_histogram(binwidth=100) + 
+  geom_vline(xintercept=mean(bike.duration$total.time), colour="darkred", size=1) + 
   theme_bw()
 
 # Get answer
-as.duration(mean(bike.duration$average) * 60)
+as.duration(mean(bike.duration$total.time))
 
-# [1] "1784.43089330139s (~29.74 minutes)"
+# [1] "4288.08717948718s (~1.19 hours)"
 
 
 #------------
